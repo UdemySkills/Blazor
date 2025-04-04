@@ -3,7 +3,9 @@
 <h3>Product - <Data> Binding</Data></h3>
 
 Name : @product.Name <br />
-IsActive : @product.IsActive
+IsActive : @product.IsActive <br />
+Price : @product.Price <br />
+<input type="number" @bind-value="@product.Price" />
 
 
 @code {
@@ -11,6 +13,7 @@ IsActive : @product.IsActive
     {
         Id = 1,
         Name = "Product1",
-        IsActive = true
+        IsActive = true,
+        Price = 9
     };
 }
