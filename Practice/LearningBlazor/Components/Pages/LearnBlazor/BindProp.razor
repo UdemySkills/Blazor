@@ -3,7 +3,7 @@
 <h3>Product - <Data> Binding</Data></h3>
 
 Name : @product.Name <br />
-IsActive : @product.IsActive <br />
+IsActive : @(product.IsActive ? "Active" : "Inactive") <br />
 Price : @product.Price <br />
 <input type="number" @bind="@product.Price" @bind:event="oninput" /> <br />
 <input type="number" @bind-value="@product.Price" @bind-value:event="oninput" />
@@ -14,7 +14,7 @@ Price : @product.Price <br />
     {
         Id = 1,
         Name = "Product1",
-        IsActive = true,
+        IsActive = false,
         Price = 9
     };
 }
