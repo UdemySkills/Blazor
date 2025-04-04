@@ -1,48 +1,70 @@
 ﻿@page "/learnBlazor/bindprop"
 
-<h3>Product - <Data> Binding</Data></h3>
 
-Name : @product.Name <br />
-IsActive : @(product.IsActive ? "Active" : "Inactive") <br />
-Price : @product.Price
-<br />
-<br />
-<br />
+<div class="row">
+    <div class="col-6 border p-3">
+        <h3 class="text-primary">Product - Details</h3>
+        <hr />
+        Name : @product.Name
+        <br />
+        IsActive : @(product.IsActive ? "Active" : "Inactive")
+        <br />
+        Price : @product.Price
+        <br />
+        @*  @if (selectedProp != null)
+        {
+            <p>
+                <br /> <br /> Selected Prop Details:     <br />
+                Value : selectedProp.Value; <br />
+                Key : selectedProp.Key; <br />
+                Id :  selectedProp.Id; <br />
+            </p>
+        } *@
 
+        @if (!string.IsNullOrEmpty(selectedPropString))
+        {
+            <p>
+                <br /> <br /> Selected Prop Details:     <br />
+                Value : @product.ProductProperties.FirstOrDefault(p => p.Key == selectedPropString).Value<br />
+                Key : @product.ProductProperties.FirstOrDefault(p => p.Key == selectedPropString).Key<br />
+                Id :  @product.ProductProperties.FirstOrDefault(p => p.Key == selectedPropString).Id<br />
+            </p>
+        }
+    </div>
 
-IsActive : <input type="checkbox" @bind-value="@product.IsActive" checked="@(product.IsActive?"checked":null)" /> <br />
-Price : <input type="number" @bind="@product.Price" @bind:event="oninput" /><br />
-Product Properties : <select @bind="selectedProp">
-    @foreach (var item in product.ProductProperties)
-    {
-        <option id="@item.Id" value="@item.Key"> @item.Value</option>
-    }
-</select>
-<br />
+    <div class="col-6 border p-3">
+        <h3 class="text-primary">Product - Selection</h3>
+        <hr />
+        IsActive :
+        <input type="checkbox" @bind-value="@product.IsActive" checked="@(product.IsActive?"checked":null)" />
+        <br />
+        Price :
+        <input type="number" @bind="@product.Price" @bind:event="oninput" />
+        <br />
+        Product Properties : @* <select @bind="selectedProp"> *@ @* Commented this section to check the behavior of the string v/s object *@
+        <select @bind="selectedPropString">
+            @foreach (var item in product.ProductProperties)
+            {
+                <option id="@item.Id" value="@item.Key"> @item.Value</option>
+            }
+        </select>
+    </div>
+</div>
 
-@if (@selectedProp != null)
-{
-    <p>
-        <br /> <br /> Selected Prop Details:     <br />
-       Value : selectedProp.Value; <br />
-        Key : selectedProp.Key; <br />
-        Id :  selectedProp.Id; <br />
-    </p>
-}
 
 
 @code {
-    private Product_Prop selectedProp = ;
-
+    // private Product_Prop selectedProp = new();
+    private string selectedPropString = "";
     Product product = new()
     {
         Id = 1,
         Name = "Product1",
         IsActive = false,
         Price = 9,
-        ProductProperties = new List<Models.Product_Prop> ()
+        ProductProperties = new List<Models.Product_Prop>()
         {
-            new Product_Prop{ Id=1, Key="Color",Value="Red"},    
+            new Product_Prop{ Id=1, Key="Color",Value="Red"},
             new Product_Prop{ Id=2, Key="Size",Value="20oz"},
             new Product_Prop{ Id=3, Key="Flavor",Value="Rose"}
         }
