@@ -11,10 +11,14 @@ Price : @product.Price
 
 
 IsActive : <input type="checkbox" @bind-value="@product.IsActive" checked="@(product.IsActive?"checked":null)" /> <br />
-Price : <input type="number" @bind="@product.Price" @bind:event="oninput" />
+Price : <input type="number" @bind="@product.Price" @bind:event="oninput" /><br />
+Product Properties : <select>
+    @foreach (var item in product.ProductProperties)
+    {
+        <option @bind="@item" id="@item.Id" value="@item.Key"> @item.Value</option>
+    }
+</select>
 <br />
-
- 
 
 @code {
     Models.Product product = new()
@@ -22,6 +26,12 @@ Price : <input type="number" @bind="@product.Price" @bind:event="oninput" />
         Id = 1,
         Name = "Product1",
         IsActive = false,
-        Price = 9
+        Price = 9,
+        ProductProperties = new List<Models.Product_Prop> ()
+        {
+            new Models.Product_Prop{ Id=1, Key="Color",Value="Red"},    
+            new Models.Product_Prop{ Id=1, Key="Size",Value="20oz"},
+            new Models.Product_Prop{ Id=1, Key="Flavor",Value="Rose"}
+        }
     };
 }
