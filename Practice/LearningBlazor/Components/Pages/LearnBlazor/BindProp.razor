@@ -19,7 +19,17 @@ Product Properties : <select @bind="selectedProp">
     }
 </select>
 <br />
-Selected Prop : @selectedProp
+
+@if (!string.IsNullOrEmpty(@selectedProp))
+{
+    <p>
+        <br /> <br /> Selected Prop Details:     <br />
+       Value : @product.ProductProperties.FirstOrDefault(p=>p.Key == selectedProp).Value; <br />
+        Key : @product.ProductProperties.FirstOrDefault(p => p.Key == selectedProp).Key; <br />
+        Id :  @product.ProductProperties.FirstOrDefault(p => p.Key == selectedProp).Id; <br />
+    </p>
+}
+
 
 @code {
     private string selectedProp = "";
@@ -33,8 +43,8 @@ Selected Prop : @selectedProp
         ProductProperties = new List<Models.Product_Prop> ()
         {
             new Models.Product_Prop{ Id=1, Key="Color",Value="Red"},    
-            new Models.Product_Prop{ Id=1, Key="Size",Value="20oz"},
-            new Models.Product_Prop{ Id=1, Key="Flavor",Value="Rose"}
+            new Models.Product_Prop{ Id=2, Key="Size",Value="20oz"},
+            new Models.Product_Prop{ Id=3, Key="Flavor",Value="Rose"}
         }
     };
 }
