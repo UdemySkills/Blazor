@@ -4,10 +4,17 @@
 
 Name : @product.Name <br />
 IsActive : @(product.IsActive ? "Active" : "Inactive") <br />
-Price : @product.Price <br />
-<input type="number" @bind="@product.Price" @bind:event="oninput" /> <br />
-<input type="number" @bind-value="@product.Price" @bind-value:event="oninput" />
+Price : @product.Price
 <br />
+<br />
+<br />
+
+
+IsActive : <input type="checkbox" @bind="@product.IsActive" /> <br />
+Price : <input type="number" @bind="@product.Price" @bind:event="oninput" />
+<br />
+
+ 
 
 @code {
     Models.Product product = new()
