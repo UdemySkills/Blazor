@@ -5,7 +5,9 @@
 Name : @product.Name <br />
 IsActive : @product.IsActive <br />
 Price : @product.Price <br />
-<input type="number" @bind="@product.Price" @bind:event="oninput" />
+<input type="number" @bind="@product.Price" @bind:event="oninput" /> <br />
+<input type="number" @bind-value="@product.Price" @bind-value:event="oninput" />
+<br />
 
 @code {
     Models.Product product = new()
