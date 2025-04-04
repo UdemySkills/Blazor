@@ -1,5 +1,8 @@
-﻿namespace LearningBlazor.Models
+﻿using System.ComponentModel;
+
+namespace LearningBlazor.Models
 {
+  
     public class Product_Prop
     {
         public int Id { get; set; }
