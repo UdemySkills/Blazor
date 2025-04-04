@@ -5,7 +5,7 @@
 Name : @product.Name <br />
 IsActive : @product.IsActive <br />
 Price : @product.Price <br />
-<input type="number" @bind-value="@product.Price" />
+<input type="number" @bind="@product.Price" @bind:event="oninput" />
 
 
 @code {
