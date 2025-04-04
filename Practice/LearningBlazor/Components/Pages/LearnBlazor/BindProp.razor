@@ -10,7 +10,7 @@ Price : @product.Price
 <br />
 
 
-IsActive : <input type="checkbox" @bind="@product.IsActive" /> <br />
+IsActive : <input type="checkbox" @bind-value="@product.IsActive" checked="@(product.IsActive?"checked":null)" /> <br />
 Price : <input type="number" @bind="@product.Price" @bind:event="oninput" />
 <br />
 
