@@ -1,4 +1,5 @@
 ﻿@page "/learnBlazor/bindprop"
+@using Models;
 
 <h3>Product - <Data> Binding</Data></h3>
 
@@ -32,9 +33,9 @@ Product Properties : <select @bind="selectedProp">
 
 
 @code {
-    private Models.Product_Prop selectedProp = ;
+    private Product_Prop selectedProp = ;
 
-    Models.Product product = new()
+    Product product = new()
     {
         Id = 1,
         Name = "Product1",
@@ -42,9 +43,9 @@ Product Properties : <select @bind="selectedProp">
         Price = 9,
         ProductProperties = new List<Models.Product_Prop> ()
         {
-            new Models.Product_Prop{ Id=1, Key="Color",Value="Red"},    
-            new Models.Product_Prop{ Id=2, Key="Size",Value="20oz"},
-            new Models.Product_Prop{ Id=3, Key="Flavor",Value="Rose"}
+            new Product_Prop{ Id=1, Key="Color",Value="Red"},    
+            new Product_Prop{ Id=2, Key="Size",Value="20oz"},
+            new Product_Prop{ Id=3, Key="Flavor",Value="Rose"}
         }
     };
 }
