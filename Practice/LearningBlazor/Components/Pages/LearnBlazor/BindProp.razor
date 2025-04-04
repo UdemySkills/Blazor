@@ -20,19 +20,19 @@ Product Properties : <select @bind="selectedProp">
 </select>
 <br />
 
-@if (!string.IsNullOrEmpty(@selectedProp))
+@if (@selectedProp != null)
 {
     <p>
         <br /> <br /> Selected Prop Details:     <br />
-       Value : @product.ProductProperties.FirstOrDefault(p=>p.Key == selectedProp).Value; <br />
-        Key : @product.ProductProperties.FirstOrDefault(p => p.Key == selectedProp).Key; <br />
-        Id :  @product.ProductProperties.FirstOrDefault(p => p.Key == selectedProp).Id; <br />
+       Value : selectedProp.Value; <br />
+        Key : selectedProp.Key; <br />
+        Id :  selectedProp.Id; <br />
     </p>
 }
 
 
 @code {
-    private string selectedProp = "";
+    private Models.Product_Prop selectedProp = ;
 
     Models.Product product = new()
     {
