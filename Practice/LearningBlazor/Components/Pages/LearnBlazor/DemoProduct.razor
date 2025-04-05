@@ -99,14 +99,7 @@
 
     private void DeleteProduct(Product deleteProduct)
     {
-        foreach (var item in Products)
-        {
-            if (item.Id== deleteProduct.Id)
-            {
-                Products.Remove(item);
-                break;
-            }
-        }
+        Products.Remove(deleteProduct);
     }
 
     private void IncrementCount(int incrementor)
