@@ -21,15 +21,21 @@
                         <br /> <br />
                     }
                 </span>
-                <input type="button" class="btn btn-danger" value="Delete">
+                <input type="button" class="btn btn-danger" @onclick="DeleteProduct" value="Delete">
             </div>
         }
 
+    </div>
+    <div>
+        <br/>
+        Counter++ button clicked <strong> @counter </strong> number of times;<br />
+        <input type="button" class="btn btn-success" @onclick="IncrementCount" value="Counter++">
     </div>
 </div>
 @code {
     // private Product_Prop selectedProp = new();
     private string selectedPropString = "";
+    private int counter=0;
     Product product = new()
         {
             Id = 1,
@@ -89,5 +95,16 @@
                 new Product_Prop {Id = 3,Key = "Color",Value = "Sunlight Yellow"}
             }
             });
+    }
+
+    private void DeleteProduct()
+    {
+
+
+    }
+
+    private void IncrementCount()
+    {
+        counter++;    
     }
 }
