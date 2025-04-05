@@ -49,33 +49,34 @@
             }
         </select>
     </div>
-</div>
-<br />
-<div class="row">
-    <h3 class="text-primary">Product - Table</h3>
-    <hr>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>IsActive</th>
-                <th>Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Products)
-            {
+    <br />
+    <div class="col-12 p-4">
+        <h3 class="text-primary">Product - Table</h3>
+        <hr>
+        <table class="table table-bordered table-striped">
+            <thead>
                 <tr>
-                    <td class="col-2">@item.Id</td>
-                    <td class="col-4"><input type="text" @bind="@item.Name" @bind:event="oninput" /></td>
-                    <td class="col-4"><input type="checkbox" @bind="@item.IsActive" />@(item.IsActive ? " Active" : " Inactive")</td>
-                    <td class="col-4"><input type="text" @bind="@item.Price" @bind:event="oninput" /></td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>IsActive</th>
+                    <th>Price</th>
                 </tr>
-            }
-        </tbody>
+            </thead>
+            <tbody>
+                @foreach (var item in Products)
+                {
+                    <tr>
+                        <td class="col-2">@item.Id</td>
+                        <td class="col-4"><input type="text" @bind="@item.Name" @bind:event="oninput" /></td>
+                        <td class="col-4"><input type="checkbox" @bind="@item.IsActive" />@(item.IsActive ? " Active" : " Inactive")</td>
+                        <td class="col-4"><input type="text" @bind="@item.Price" @bind:event="oninput" /></td>
+                    </tr>
+                }
+            </tbody>
         </table>
+    </div>
 </div>
+
 
 
 
