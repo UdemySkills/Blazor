@@ -21,7 +21,7 @@
                         <br /> <br />
                     }
                 </span>
-                <input type="button" class="btn btn-danger" @onclick="DeleteProduct" value="Delete">
+                <input type="button" class="btn btn-danger" @onclick="()=>DeleteProduct(item)" value="Delete">
             </div>
         }
 
@@ -97,10 +97,16 @@
             });
     }
 
-    private void DeleteProduct()
+    private void DeleteProduct(Product deleteProduct)
     {
-
-
+        foreach (var item in Products)
+        {
+            if (item.Id== deleteProduct.Id)
+            {
+                Products.Remove(item);
+                break;
+            }
+        }
     }
 
     private void IncrementCount(int incrementor)
