@@ -1,12 +1,13 @@
 ﻿@page "/learnBlazor/demoproduct"
 <h2 class="text-primary">Demo Product</h2>
 <p>You have Favourited <strong>@favouritesCount</strong> Products</p>
+<p>and selected <strong> @selectedProdcutName</strong></p>
 <div class="p-2 mt-2">
     <div class="row">
         <hr>
         @foreach (var item in Products)
         {
-            <_IndividualProduct product="@item" onFavouriteUpdated="FavouriteCountChange" />
+            <_IndividualProduct product="@item" onFavouriteUpdated="FavouriteCountChange" onSelected="ShowSelectedProduct" />
         }
     </div>
 </div>
@@ -15,6 +16,7 @@
     private string selectedPropString = "";
     private int favouritesCount = 0;
     private int counter = 0;
+    private string selectedProdcutName = "";
     Product product = new()
         {
             Id = 1,
@@ -75,9 +77,14 @@
             }
             });
     }
-   
+
     private void FavouriteCountChange(bool isSelected)
     {
         favouritesCount = isSelected ? favouritesCount += 1 : favouritesCount -= 1;
+    }
+
+    private void ShowSelectedProduct(string selectedProduct)
+    {
+        selectedProdcutName = selectedProduct;
     }
 }

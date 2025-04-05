@@ -1,10 +1,8 @@
-﻿<div class="col-5 border bg-light m-1">
-
+﻿<div class="col-5 border bg-light m-1" @onclick="selectProduct">
     <span>
         <h4>Product - @product.Id</h4>
         <span><input type="checkbox" @onchange="FavourtieUpdated" /> Favourite this</span><br /><br />
         <strong>Name : @product.Name</strong><br />
-
         <span><input type="checkbox" @bind="product.IsActive" /> Show Properties </span><br />
         @if (product.IsActive)
         {
@@ -26,8 +24,17 @@
 
     [Parameter]
     public EventCallback<bool> onFavouriteUpdated { get; set; }
+
+    [Parameter]
+    public EventCallback<string> onSelected { get; set; }
+
     private async Task FavourtieUpdated(ChangeEventArgs args)
     {
         await onFavouriteUpdated.InvokeAsync((bool)(args.Value??false));
+    }
+
+    private async Task selectProduct(EventArgs args)
+    {
+        await onSelected.InvokeAsync(product.Name);
     }
 }
