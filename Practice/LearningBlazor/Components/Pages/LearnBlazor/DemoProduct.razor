@@ -29,7 +29,7 @@
     <div>
         <br/>
         Counter++ button clicked <strong> @counter </strong> number of times;<br />
-        <input type="button" class="btn btn-success" @onclick="IncrementCount" value="Counter++">
+        <input type="button" class="btn btn-success" @onclick="() => IncrementCount(5)" value="Counter + 5">
     </div>
 </div>
 @code {
@@ -103,8 +103,8 @@
 
     }
 
-    private void IncrementCount()
+    private void IncrementCount(int incrementor)
     {
-        counter++;    
+        counter += incrementor;    
     }
 }
