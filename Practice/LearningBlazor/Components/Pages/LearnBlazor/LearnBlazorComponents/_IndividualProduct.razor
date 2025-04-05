@@ -1,8 +1,10 @@
 ﻿<div class="col-5 border bg-light m-1">
 
     <span>
-        <h4>Product - @product.Id</h4><br />
-        Name : @product.Name<br />
+        <h4>Product - @product.Id</h4>
+        <span><input type="checkbox" /> Favourite this</span><br /><br />
+        <strong>Name : @product.Name</strong><br />
+       
         <span><input type="checkbox" @bind="product.IsActive" /> Show Properties </span><br />
         @if (product.IsActive)
         {

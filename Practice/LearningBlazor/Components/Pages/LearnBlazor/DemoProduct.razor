@@ -1,23 +1,19 @@
 ﻿@page "/learnBlazor/demoproduct"
+<h2 class="text-primary">Demo Product</h2>
 
 <div class="p-2 mt-2">
     <div class="row">
-        <h3 class="text-primary">Demo - Product</h3>
         <hr>
         @foreach (var item in Products)
         {
             <_IndividualProduct product="@item" />
         }
     </div>
-    <div>
-        <br />
-        Counter++ button clicked <strong> @counter </strong> number of times;<br />
-        <input type="button" class="btn btn-success" @onclick="() => IncrementCount(5)" value="Counter + 5">
-    </div>
 </div>
 @code {
     // private Product_Prop selectedProp = new();
     private string selectedPropString = "";
+    private int favouritesCount = 0;
     private int counter = 0;
     Product product = new()
         {
@@ -78,15 +74,5 @@
                 new Product_Prop {Id = 3,Key = "Color",Value = "Sunlight Yellow"}
             }
             });
-    }
-
-    private void DeleteProduct(Product deleteProduct)
-    {
-        Products.Remove(deleteProduct);
-    }
-
-    private void IncrementCount(int incrementor)
-    {
-        counter += incrementor;
     }
 }
