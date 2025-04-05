@@ -2,9 +2,9 @@
 
     <span>
         <h4>Product - @product.Id</h4>
-        <span><input type="checkbox" /> Favourite this</span><br /><br />
+        <span><input type="checkbox" @onchange="FavourtieUpdated" /> Favourite this</span><br /><br />
         <strong>Name : @product.Name</strong><br />
-       
+
         <span><input type="checkbox" @bind="product.IsActive" /> Show Properties </span><br />
         @if (product.IsActive)
         {
@@ -23,4 +23,11 @@
 @code {
     [Parameter]
     public Product product { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> onFavouriteUpdated { get; set; }
+    private async Task FavourtieUpdated(ChangeEventArgs args)
+    {
+        await onFavouriteUpdated.InvokeAsync((bool)(args.Value??false));
+    }
 }

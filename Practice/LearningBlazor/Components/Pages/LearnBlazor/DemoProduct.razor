@@ -6,7 +6,7 @@
         <hr>
         @foreach (var item in Products)
         {
-            <_IndividualProduct product="@item" />
+            <_IndividualProduct product="@item" onFavouriteUpdated="FavouriteCountChange" />
         }
     </div>
 </div>
@@ -76,7 +76,7 @@
             });
     }
    
-    private void FavouriteCountClick(bool isSelected)
+    private void FavouriteCountChange(bool isSelected)
     {
         favouritesCount = isSelected ? favouritesCount += 1 : favouritesCount -= 1;
     }
