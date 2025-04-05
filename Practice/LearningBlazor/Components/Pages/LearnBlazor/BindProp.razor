@@ -74,6 +74,14 @@
                 }
             </tbody>
         </table>
+        <div class="col-12 p-4">
+            <h3 class="text-primary">Product - Summary</h3>
+            <hr>
+            @foreach (var item in Products)
+            {
+                <br /><span> @item.Name [@item.Price] is @(item.IsActive ? " Active" : " Inactive") </span>
+            }
+        </div>
     </div>
 </div>
 
