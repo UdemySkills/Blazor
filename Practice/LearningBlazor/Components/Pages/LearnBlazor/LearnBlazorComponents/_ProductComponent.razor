@@ -1,0 +1,24 @@
+﻿<div class="col-5 border bg-light m-1">
+
+    <span>
+        <h4>Product - @product.Id</h4><br />
+        Name : @product.Name<br />
+        <span><input type="checkbox" @bind="product.IsActive" /> Show Properties </span><br />
+        @if (product.IsActive)
+        {
+            foreach (var props in product.ProductProperties)
+            {
+                <span><br />@props.Key - @props.Value </span>
+            }
+            <br /> <br />
+        }
+    </span>
+    <_DeleteButtonComponent product="@product">
+
+    </_DeleteButtonComponent>
+</div>
+
+@code {
+    [Parameter]
+    public Product product { get; set; }
+}

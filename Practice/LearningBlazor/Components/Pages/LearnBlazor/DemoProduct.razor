@@ -6,31 +6,11 @@
         <hr>
         @foreach (var item in Products)
         {
-            <div class="col-5 border bg-light m-1">
-
-                <span>
-                    <h4>Product - @item.Id</h4><br />
-                    Name : @item.Name<br />
-                    <span><input type="checkbox" @bind="item.IsActive" /> Show Properties </span><br />
-                    @if (item.IsActive)
-                    {
-                        foreach (var props in item.ProductProperties)
-                        {
-                            <span><br />@props.Key - @props.Value </span>
-                        }
-                        <br /> <br />
-                    }
-                </span>
-                <_DeleteButtonComponent product="@item">
-
-                </_DeleteButtonComponent>
-                <input type="button" class="btn btn-danger" @onclick="()=>DeleteProduct(item)" value="Delete">
-            </div>
+            <_ProductComponent product="@item"></_ProductComponent>
         }
-
     </div>
     <div>
-        <br/>
+        <br />
         Counter++ button clicked <strong> @counter </strong> number of times;<br />
         <input type="button" class="btn btn-success" @onclick="() => IncrementCount(5)" value="Counter + 5">
     </div>
@@ -38,7 +18,7 @@
 @code {
     // private Product_Prop selectedProp = new();
     private string selectedPropString = "";
-    private int counter=0;
+    private int counter = 0;
     Product product = new()
         {
             Id = 1,
@@ -107,6 +87,6 @@
 
     private void IncrementCount(int incrementor)
     {
-        counter += incrementor;    
+        counter += incrementor;
     }
 }
