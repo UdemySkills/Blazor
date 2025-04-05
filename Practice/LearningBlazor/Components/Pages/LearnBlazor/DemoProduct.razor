@@ -1,33 +1,32 @@
 ﻿@page "/learnBlazor/demoproduct"
 
-<div class="row">
-    <h3 class="text-primary">Demo - Product</h3>
-    <hr>
-    @foreach (var item in Products)
-    {
-        <div class="col-6 border p-3">
+<div class="p-2 mt-2">
+    <div class="row">
+        <h3 class="text-primary">Demo - Product</h3>
+        <hr>
+        @foreach (var item in Products)
+        {
+            <div class="col-5 border bg-light m-1">
 
-            <span>
-                <h3>Product - @item.Id</h3><br />
-                Name : @item.Name<br />
-                <span><input type="checkbox" @bind="item.IsActive" /> Show Properties </span><br />
-
-
-                @if (item.IsActive)
-                {
-                    foreach (var props in item.ProductProperties)
+                <span>
+                    <h4>Product - @item.Id</h4><br />
+                    Name : @item.Name<br />
+                    <span><input type="checkbox" @bind="item.IsActive" /> Show Properties </span><br />
+                    @if (item.IsActive)
                     {
-                        <span><br />@props.Key - @props.Value </span>
+                        foreach (var props in item.ProductProperties)
+                        {
+                            <span><br />@props.Key - @props.Value </span>
+                        }
+                        <br /> <br />
                     }
-                    <br /> <br />
-                }
-            </span>
-            <button class="btn btn-danger">Delete</button>
-        </div>
-    }
+                </span>
+                <input type="button" class="btn btn-danger" value="Delete">
+            </div>
+        }
 
+    </div>
 </div>
-
 @code {
     // private Product_Prop selectedProp = new();
     private string selectedPropString = "";
