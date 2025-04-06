@@ -3,12 +3,21 @@
 <h3>ParentComponent</h3>
 
 <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
-    <div>
-        This content is in Div and passed to Child as the Blazor Fragment which is similar to children in React
-    </div>
+    <ChildSomeContent>
+        <div>
+            This is from the ChildSomeContent section
+        </div>
+    </ChildSomeContent>
+    <ChildContent>
+        <p>
+            This content is in Div and passed to Child as the Blazor Fragment which is similar to children in React
+        </p>
+        <br />
+        <p class="text-primary">some other text</p>
+    </ChildContent>
 </_ChildComponent>
 
-<p>@Message</p>
+<div class="alert alert-success">@Message</div>
 
 
 @code {

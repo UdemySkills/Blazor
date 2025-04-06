@@ -2,10 +2,17 @@
     <div class="alert alert-info">
         @Title
     </div>
+    @if (ChildSomeContent != null)
+    {
+        <div class="alert alert-info">
+            @ChildSomeContent
+
+        </div>
+    }
     @if (ChildContent != null)
     {
         <div class="alert alert-info">
-            @ChildContent
+        @ChildContent
         </div>
     }
     <button class="btn btn-danger" @onclick="ClickEvent">Click Me</button>
@@ -13,6 +20,9 @@
 @code {
     [Parameter]
     public string Title { get; set; } = "";
+
+    [Parameter]
+    public RenderFragment ChildSomeContent { get; set; }
 
     [Parameter]
     public RenderFragment ChildContent { get; set; }
