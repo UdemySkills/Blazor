@@ -15,6 +15,12 @@
     }
 </div>
 
+<div class="row">
+    <button class="btn btn-success" @onclick="ShowToastrSuccess">Toastr Success</button>
+    <button class="btn btn-danger" @onclick="ShowToastrFailure">Toastr Failure</button>
+</div>
+
+
 @code {
     private string ConfirmMessage = "Are you sure you want to click here ?";
     private bool confirmResult { get; set; }
@@ -22,5 +28,15 @@
     private async Task TestConfirmBox()
     {
         confirmResult = await _jSRuntime.InvokeAsync<bool>("confirm", ConfirmMessage);
+    }
+
+    private async Task ShowToastrSuccess()
+    {
+        await _jSRuntime.InvokeVoidAsync("showToastr", "success", "This is a success Notification");
+    }
+
+    private async Task ShowToastrFailure()
+    {
+        await _jSRuntime.InvokeVoidAsync("showToastr", "error", "This is a failure message");
     }
 }
