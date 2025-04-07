@@ -6,21 +6,25 @@
     <div class="alert alert-success">@Message</div>
 }
 <CascadingValue Value="@MessageForGrandChild">
-    <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
-        <ChildSomeContent>
-            <div>
-                This is from the ChildSomeContent section
-            </div>
-        </ChildSomeContent>
-    </_ChildComponent>
+    <CascadingValue Value="@LuckyNumber">
+        <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
+            <ChildSomeContent>
+                <div>
+                    This is from the ChildSomeContent section
+                </div>
+            </ChildSomeContent>
+        </_ChildComponent>
+    </CascadingValue>
 </CascadingValue>
 
 @code {
     public string Message = "";
 
-    private string MessageForGrandChild = "This message is sent from PARENT to GRANDCHILD Via CHILD Component"
+    private string MessageForGrandChild = "This message is sent from PARENT to GRANDCHILD Via CHILD Component";
 
-private void ShowMessage()
+    private int LuckyNumber = 9;
+
+    private void ShowMessage()
     {
         Message = "This message is from Parent component through ShowMessage() on button Click";
     }
