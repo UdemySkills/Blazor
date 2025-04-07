@@ -2,6 +2,7 @@
 @page "/learnRouting/{Param1:int}"
 @page "/learnRouting/{Param1:int}/{Param2}"
 @page "/learnBlazor/learnRouting"
+@page "/learnRouting/catch-all/{*PageParameters}"
 
 <h3>LearnRouting</h3>
 @if(@Param1 != 0)
@@ -12,6 +13,7 @@
 {
     <p>You passed  "@Param2" as the first parameter </P>
 }
+<p>Page Parameters : @PageParameters</p>
 
 @code {
     [Parameter]
@@ -19,4 +21,7 @@
 
     [Parameter]
     public string Param2 { get; set; } = "";
+
+    [Parameter]
+    public string PageParameters { get; set; } = "";
 }
