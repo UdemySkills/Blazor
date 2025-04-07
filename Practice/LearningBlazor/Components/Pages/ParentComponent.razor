@@ -6,7 +6,7 @@
     <div class="alert alert-success">@Message</div>
 }
 <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent"
-    MessageFromParentToGrandParent="This message is sent from PARENT to GRANDCHILD Via CHILD Component">
+    MessageFromParentToGrandParent="@MessageForGrandChild">
     <ChildSomeContent>
         <div>
             This is from the ChildSomeContent section
@@ -18,7 +18,9 @@
 @code {
     public string Message = "";
 
-    private void ShowMessage()
+    private string MessageForGrandChild = "This message is sent from PARENT to GRANDCHILD Via CHILD Component"
+
+private void ShowMessage()
     {
         Message = "This message is from Parent component through ShowMessage() on button Click";
     }
