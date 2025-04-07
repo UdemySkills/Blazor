@@ -1,11 +1,22 @@
 ﻿@page "/learnrouting"
 @page "/learnRouting/{Param1}"
+@page "/learnRouting/{Param1}/{Param2}"
 @page "/learnBlazor/learnRouting"
 
 <h3>LearnRouting</h3>
-<p> @Param1</P
+@if(!string.IsNullOrEmpty(@Param1))
+{
+    <p>You passed  "@Param1" as the first parameter </P>
+}
+@if(!string.IsNullOrEmpty(@Param2))
+{
+    <p>You passed  "@Param2" as the first parameter </P>
+}
 
 @code {
     [Parameter]
     public string Param1 { get; set; } = "";
+
+    [Parameter]
+    public string Param2 { get; set; } = "";
 }
