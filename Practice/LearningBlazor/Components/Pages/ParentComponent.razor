@@ -5,15 +5,15 @@
 {
     <div class="alert alert-success">@Message</div>
 }
-<_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent"
-    MessageFromParentToGrandParent="@MessageForGrandChild">
-    <ChildSomeContent>
-        <div>
-            This is from the ChildSomeContent section
-        </div>
-    </ChildSomeContent>
-</_ChildComponent>
-
+<CascadingValue Value="@MessageForGrandChild">
+    <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
+        <ChildSomeContent>
+            <div>
+                This is from the ChildSomeContent section
+            </div>
+        </ChildSomeContent>
+    </_ChildComponent>
+</CascadingValue>
 
 @code {
     public string Message = "";
