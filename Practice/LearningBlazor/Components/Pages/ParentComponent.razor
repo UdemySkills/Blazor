@@ -5,8 +5,8 @@
 {
     <div class="alert alert-success">@Message</div>
 }
-<CascadingValue Value="@MessageForGrandChild">
-    <CascadingValue Value="@LuckyNumber">
+<CascadingValue Value="@MessageForGrandChild" Name="NamedParameter1">
+    <CascadingValue Value="@LuckyNumber" Name="NamedParameter2">
         <_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
             <ChildSomeContent>
                 <div>
@@ -22,7 +22,7 @@
 
     private string MessageForGrandChild = "This message is sent from PARENT to GRANDCHILD Via CHILD Component";
 
-    private int LuckyNumber = 9;
+    private string LuckyNumber = "9";
 
     private void ShowMessage()
     {

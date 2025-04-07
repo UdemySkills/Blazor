@@ -7,9 +7,9 @@
 
 @code {
 
-    [CascadingParameter]
+    [CascadingParameter(Name = "NamedParameter1")]
     public string MessageForGrandChildFromParent { get; set; }
 
-    [CascadingParameter]
-    public int LuckyNumberForGrandChild { get; set; }
+    [CascadingParameter(Name = "NamedParameter2")]
+    public string LuckyNumberForGrandChild { get; set; }
 }
