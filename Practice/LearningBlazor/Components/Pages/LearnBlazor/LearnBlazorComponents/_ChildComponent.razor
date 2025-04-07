@@ -12,11 +12,13 @@
     @if (ChildContent != null)
     {
         <div class="alert alert-info">
-        @ChildContent
+            @ChildContent
         </div>
     }
-    <button class="btn btn-danger" @onclick="ClickEvent">Click Me</button>
-</div> 
+    <button class="btn btn-danger" @onclick="ClickEvent">Click Me to get dynamic content rendered</button>
+
+    <_GrandChildComponent MessageForGrandChild="This message is passed from the CHILD COMPONENT"></_GrandChildComponent>
+</div>
 @code {
     [Parameter]
     public string Title { get; set; } = "";
@@ -29,5 +31,4 @@
 
     [Parameter]
     public EventCallback ClickEvent { get; set; }
-
 }
