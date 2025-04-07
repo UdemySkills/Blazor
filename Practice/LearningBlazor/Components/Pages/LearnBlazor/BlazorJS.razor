@@ -1,0 +1,26 @@
+﻿@page "/blazorjs"
+@inject IJSRuntime _jSRuntime
+
+<h3>BlazorJS</h3>
+
+<div class="row">
+    <button class="btn btn-secondary" @onclick="TestConfirmBox">Test  Confirm Button</button>
+    @if (confirmResult)
+    {
+        <p class="alert alert-success">Yeah you are ok with it !!!</p>
+    }
+    else
+    {
+        <p class="alert alert-danger">Pending Confirmation..</p>
+    }
+</div>
+
+@code {
+    private string ConfirmMessage = "Are you sure you want to click here ?";
+    private bool confirmResult { get; set; }
+
+    private async Task TestConfirmBox()
+    {
+        confirmResult = await _jSRuntime.InvokeAsync<bool>("confirm", ConfirmMessage);
+    }
+}
