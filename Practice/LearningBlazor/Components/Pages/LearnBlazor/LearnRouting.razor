@@ -3,6 +3,7 @@
 @page "/learnRouting/{Param1}/{Param2}"
 @page "/learnBlazor/learnRouting"
 @page "/learnRouting/catch-all/{*PageParameters}"
+@inject NavigationManager _NavigationManager
 
 <h3>LearnRouting</h3>
 @if(!string.IsNullOrEmpty(@Param1))
@@ -16,7 +17,7 @@
 <p>Page Parameters : @PageParameters</p>
 
 <a href="learnrouting?param1=Learn&Param2=Blazor" class="btn btn-primary">Navigate to query Parameters</a>
-<button class="btn btn-success">Load Parameters</button>
+<button class="btn btn-success" @onclick="LoadParameters">Load Parameters</button>
 <br />
 
 
@@ -33,4 +34,13 @@
 
     [Parameter]
     public string PageParameters { get; set; } = "";
+
+    private void LoadParameters()
+    {
+        var uri = new Uri(_NavigationManager.Uri);
+        var query = Microsoft.AspNetCore.WebUtilities.QueryHelpers.ParseQuery(uri.Query);
+        Param1 = query["Param1"];
+        Param2 = query["Param2"];
+
+    }
 }
