@@ -17,7 +17,7 @@
     }
     <button class="btn btn-danger" @onclick="ClickEvent">Click Me to get dynamic content rendered</button>
 
-    <_GrandChildComponent MessageForGrandChild="This message is passed from the CHILD COMPONENT"></_GrandChildComponent>
+    <_GrandChildComponent MessageForGrandChild="@MessageFromParentToGrandParent"></_GrandChildComponent>
 </div>
 @code {
     [Parameter]
@@ -31,4 +31,7 @@
 
     [Parameter]
     public EventCallback ClickEvent { get; set; }
+
+    [Parameter]
+    public string MessageFromParentToGrandParent { get; set; }
 }

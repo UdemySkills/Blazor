@@ -5,21 +5,13 @@
 {
     <div class="alert alert-success">@Message</div>
 }
-<_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent">
+<_ChildComponent ClickEvent="ShowMessage" Title="This title is passed from the ParentComponent"
+    MessageFromParentToGrandParent="This message is sent from PARENT to GRANDCHILD Via CHILD Component">
     <ChildSomeContent>
         <div>
             This is from the ChildSomeContent section
         </div>
     </ChildSomeContent>
-
-    <ChildContent>
-        <p>
-            This content is in Div and passed to Child as the Blazor Fragment which is similar to children in React
-        </p>
-        <br />
-        <p class="text-primary">some other text</p>
-    </ChildContent>
-
 </_ChildComponent>
 
 
